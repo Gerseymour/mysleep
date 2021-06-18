@@ -23,5 +23,9 @@
     "formik": "^2.2.9",
     "mongoose": "^5.12.13",
     "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "jest-expo": "^41.0.0",
+    "react-test-renderer": "^16.11.0"
   }
 }

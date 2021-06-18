@@ -13,6 +13,10 @@ const getFonts = () => Font.loadAsync({
 export default function App () {
   const [fontsLoaded, setFontsLoaded] = useState(false)
 
+  return (
+    <View> <Text>Text</Text> </View>
+  )
+
   if (fontsLoaded) {
     return (
       <Navigator />
