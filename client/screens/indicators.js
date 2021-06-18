@@ -7,30 +7,30 @@ import Card from '../shared/card'
 import FlatButton from '../shared/button'
 
 
-export default function Indicators () {
+export default function Indicators() {
   const [habitList, setHabitList] = useState([])
 
   const pressHandlerAPI = () => {
-     ApiService.getGoogleData({})
-    .then(() => ClickService.getData())
-    .then(habits => setHabitList(habits))
-}
+    ApiService.getGoogleData({})
+      .then(() => ClickService.getData())
+      .then(habits => setHabitList(habits))
+  }
 
-useEffect(() => {
-  ClickService.getData().then(habits => setHabitList(habits))
-}, [])
+  useEffect(() => {
+    ClickService.getData().then(habits => setHabitList(habits))
+  }, [])
 
   const list = habitList.map(el => {
     el.deepSleepAverage = (el.deepSleepTotal / el.count).toFixed(2)
     return el
   })
-  
+
   const sortedList = list.sort(function (a, b) {
     const sorted = a.deepSleepAverage - b.deepSleepAverage
     return sorted
   })
-  
-  
+
+
   const Item = ({ habit, deepSleepAverage }) => (
     <View>
       <Card>

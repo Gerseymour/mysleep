@@ -10,12 +10,8 @@ const getFonts = () => Font.loadAsync({
   'alegreya-bold': require('./assets/fonts/Alegreya-Bold.ttf')
 })
 
-export default function App () {
+export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false)
-
-  return (
-    <View> <Text>Text</Text> </View>
-  )
 
   if (fontsLoaded) {
     return (
