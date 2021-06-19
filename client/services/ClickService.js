@@ -14,9 +14,9 @@ const addHabit = async (data) => {
 
 // --------- Get the data from DB to update indicators
 const getData = async () => {
-  console.log('inside getdata');
   const response = await fetch('http://192.168.1.116:3006/getList')
-  return await response.json()
+  const result = await response.json();
+  return result;
 }
 
 export default {

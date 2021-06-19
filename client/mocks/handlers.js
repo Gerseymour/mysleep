@@ -12,10 +12,11 @@ export const handlers = [
   rest.get('http://192.168.1.116:3006/getList', (req, res, ctx) => {
     return res(
       ctx.status(200),
-      ctx.json([]),
+      ctx.json([{ _id: 1, habit: 'habit2', deepSleepTotal: 20, count: 1 },
+      { _id: 2, habit: 'habit1', deepSleepTotal: 20, count: 5 }]),
     )
   }),
-  rest.post('http://192.168.1.116:3006/getList', (req, res, ctx) => {
+  rest.post('http://192.168.1.116:3006/getData', (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json([]),
