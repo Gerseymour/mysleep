@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent, act } from '@testing-library/react-native';
 import { server } from '../mocks/server';
+import { handlers2 } from '../mocks/handlers';
 import Indicators from './indicators';
 
 describe('<Indicators />', () => {
@@ -40,10 +41,12 @@ describe('<Indicators />', () => {
 
     const { queryByText, findByText } = render(<Indicators />);
 
+    server.use(...handlers2);
+
     const button = queryByText('Update');
     await fireEvent(button, 'onPress');
 
-    const result = await findByText('habit1 __ 4.00hrs');
+    const result = await findByText('habit3 __ 1.00hrs');
     expect(result).toBeTruthy();
 
   }),

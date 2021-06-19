@@ -23,3 +23,26 @@ export const handlers = [
     )
   }),
 ]
+
+export const handlers2 = [
+  rest.post('https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate', (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        message: 'hello',
+      }),
+    )
+  }),
+  rest.get('http://192.168.1.116:3006/getList', (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json([{ _id: 1, habit: 'habit3', deepSleepTotal: 1, count: 1 }]),
+    )
+  }),
+  rest.post('http://192.168.1.116:3006/getData', (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json([]),
+    )
+  }),
+]
