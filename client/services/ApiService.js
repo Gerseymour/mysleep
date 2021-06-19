@@ -5,10 +5,11 @@ const bearer_token = require('../dotFile')
 
 let endTime = Date.now()
 let endDate = new Date(endTime)
-let startTime = endDate.setDate(endDate.getDate()-1)
+let startTime = endDate.setDate(endDate.getDate() - 1)
 
 // ------- Get sleep stage data from Google API
 const getGoogleData = async (token) => {
+  console.log('in api');
   const res = await fetch('https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate', {
     method: 'POST',
     headers: {
@@ -28,12 +29,13 @@ const getGoogleData = async (token) => {
     .catch(err => {
       console.log('error', err)
     })
+  console.log('res', res);
   sendData(res)
   //console.log(res);
   return res
 }
 
-// ------- Send sleep stage data from Google API to back-end   
+// ------- Send sleep stage data from Google API to back-end
 // expert: 'http://192.168.1.116:3006/getData' / cazador: 'http://192.168.68.100:3006/getData'
 const sendData = async (data) => {
   const res = await fetch('http://192.168.1.116:3006/getData', {

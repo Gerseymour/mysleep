@@ -11,13 +11,19 @@ export default function Indicators() {
   const [habitList, setHabitList] = useState([])
 
   const pressHandlerAPI = () => {
+    console.log('in indicators api');
     ApiService.getGoogleData({})
       .then(() => ClickService.getData())
       .then(habits => setHabitList(habits))
+      .catch((e) => console.error('there was an error: ', e));
   }
 
   useEffect(() => {
-    ClickService.getData().then(habits => setHabitList(habits))
+    ClickService.getData()
+    // .then(habits => setHabitList(habits))
+    return (() => {
+      console.log('unmounted');
+    })
   }, [])
 
   const list = habitList.map(el => {
