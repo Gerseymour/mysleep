@@ -49,10 +49,21 @@ export const handlers2 = [
 
 
 export const handler3 = [
-  rest.get('http://192.168.1.116:3006/habits', (req, res, ctx) => {
+  rest.post('http://192.168.1.116:3006/habits', (req, res, ctx) => {
+    console.log('in handler 3')
     return res(
       ctx.status(200),
-      ctx.json([{ _id: 1, habit: 'habit1', deepSleepTotal: 1, count: 1 }]),
+      ctx.json({ _id: 1, habit: 'habit1', deepSleepTotal: 1, count: 1 }),
+    )
+  })
+]
+
+export const handler4 = [
+  rest.post('http://192.168.1.116:3006/habits', (req, res, ctx) => {
+    console.log('in handler 4')
+    return res(
+      ctx.status(200),
+      ctx.json({ _id: 1, habit: 'habit2', deepSleepTotal: 1, count: 1 }),
     )
   })
 ]

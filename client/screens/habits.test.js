@@ -2,11 +2,11 @@ import Habits from './habits'
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react-native'
 import { server } from '../mocks/server'
-import { handler3 } from '../mocks/handlers'
+import { handler3, handler4 } from '../mocks/handlers'
 //arrange act assert
 
 
-describe.only('<Habits />', () => {
+describe('<Habits />', () => {
   beforeAll(() => server.listen())
   afterEach(() => server.resetHandlers())
   afterAll(() => server.close())
@@ -35,9 +35,9 @@ describe.only('<Habits />', () => {
   })
 
   it('when submit is called the data is posted to api', async () => {
+    server.use(...handler3)
     const { queryByText, findByText, getByPlaceholderText } = render(<Habits />);
 
-    server.use(handler3)
     const button = queryByText('submit');
     await fireEvent(getByPlaceholderText('Add habit'), 'changeText', 'habit1');
     await fireEvent(button, 'onPress');
@@ -47,7 +47,19 @@ describe.only('<Habits />', () => {
   })
 
   it('when submit is called the flatlist renders the correct amount of cards', async () => {
-  
+    const { queryByText, findAllByTestId, getByPlaceholderText } = render(<Habits />);
+    
+    server.use(...handler3)
+    const button = queryByText('submit');
+    await fireEvent(getByPlaceholderText('Add habit'), 'changeText', 'habit2');
+    await fireEvent(button, 'onPress');
+
+    server.use(...handler4)
+    await fireEvent(getByPlaceholderText('Add habit'), 'changeText', 'habit2');
+    await fireEvent(button, 'onPress');
+    const result = await findAllByTestId('Habit');
+    console.log(result);
+    expect(result).toHaveLength(1);
 
   })
 

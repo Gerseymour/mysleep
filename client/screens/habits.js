@@ -15,7 +15,8 @@ export default function Habits ({ navigation }) {
   // Save habit to DB
   const saveHabit = async (habit) => {
     const data = await ClickService.addHabit(habit)
-    setHabits([...habits, data])
+    await setHabits([...habits, data])
+    console.log('habs',habits)
   }
 
   // Remove habit
@@ -24,6 +25,7 @@ export default function Habits ({ navigation }) {
       return el.habit !== habit
     }))
   }
+  console.log('rerender', habits)
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -55,10 +57,10 @@ export default function Habits ({ navigation }) {
             data={habits}
             keyExtractor={item => item._id}
             renderItem={({ item }) => (
-              <View>
-                <TouchableOpacity onPress={() => removeHabit(item.habit)}>
+              <View >
+                <TouchableOpacity onPress={() => removeHabit(item.habit)} >
                   <Card>
-                    <Text style={globalStyles.componentText}>{item.habit}</Text>
+                    <Text style={globalStyles.componentText} testID="Habit">{item.habit}</Text>
                   </Card>
                 </TouchableOpacity>
               </View>

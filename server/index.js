@@ -34,6 +34,8 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.listen(PORT, () => {
-  console.log(`Server listening on http://localhost:${PORT}`)
-})
+// app.listen(PORT, () => {
+//   console.log(`Server listening on http://localhost:${PORT}`)
+// })
+
+module.exports = app
