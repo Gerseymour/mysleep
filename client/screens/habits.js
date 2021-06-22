@@ -43,11 +43,12 @@ export default function Habits ({ navigation }) {
             <View>
               <TextInput
                 style={globalStyles.input}
+                testID='habit-input'
                 placeholder='Add habit'
                 onChangeText={props.handleChange('habit')}
                 value={props.values.habit}
               />
-              <FlatButton text='submit' onPress={props.handleSubmit} />
+              <FlatButton text='submit' testID='submit-button' onPress={props.handleSubmit} />
             </View>
           )}
         </Formik>
@@ -59,8 +60,8 @@ export default function Habits ({ navigation }) {
             renderItem={({ item }) => (
               <View >
                 <TouchableOpacity onPress={() => removeHabit(item.habit)} >
-                  <Card>
-                    <Text style={globalStyles.componentText} testID="Habit">{item.habit}</Text>
+                  <Card >
+                    <Text style={globalStyles.componentText} >{item.habit}</Text>
                   </Card>
                 </TouchableOpacity>
               </View>
