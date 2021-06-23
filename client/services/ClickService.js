@@ -1,6 +1,6 @@
 // --------- Add habit to DB
 const addHabit = async (data) => {
-  const res = await fetch('http://192.168.1.116:3006/habits', {
+  const res = await fetch('http://localhost:3006/habits', {
     method: 'POST',
     headers: {
       'Content-type': 'application/json'
@@ -14,7 +14,7 @@ const addHabit = async (data) => {
 
 // --------- Get the data from DB to update indicators
 const getData = async () => {
-  const response = await fetch('http://192.168.1.116:3006/getList')
+  const response = await fetch('http://localhost:3006/getList')
   const result = await response.json();
   return result;
 }

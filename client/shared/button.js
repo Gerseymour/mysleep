@@ -5,7 +5,7 @@ export default function FlatButton({ text, onPress }) {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.button}>
-        <Text style={styles.buttonText}>{text}</Text>
+        <Text style={styles.buttonText} testID={text}>{text}</Text>
       </View>
     </TouchableOpacity>
   )
